@@ -1,9 +1,11 @@
 import requests
 import json
+from decouple import config
 
 
 def chat_gpt_completions(content_value):
     url = "https://api.openai.com/v1/chat/completions"
+    token = config('OPEN_API_KEY', default='')
 
     payload = json.dumps({
         "model": "gpt-3.5-turbo",
@@ -17,9 +19,11 @@ def chat_gpt_completions(content_value):
     })
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Authorization': 'Bearer ' + token
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
 
     print(response.text)
+
+    return response
