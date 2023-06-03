@@ -24,7 +24,7 @@ def login_api():
     gender = data['gender']
     goal = data['goal']
 
-    prompt = "Create a concise 7 day per meal plan for a " + age + " years old " + gender + " with a goal of " + goal + ". "
+    prompt = "Create a concise 2 day per meal plan for a " + age + " years old " + gender + " with a goal of " + goal + ". "
     if allergies != 'NA':
         prompt = prompt + "Foods should not contain any " + allergies + "."
     prompt = prompt + " Only use foods from " + cuisine + " cuisines."
