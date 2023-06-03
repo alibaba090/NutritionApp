@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import outgoing_api_requests
 import json
 
 app = Flask(__name__)
-CORS(app, origins='http://localhost:3000')
+CORS(app)
 
 
 @app.route('/')
@@ -13,6 +13,7 @@ def wecome():
 
 
 @app.route('/nutritionplan', methods=['POST'])
+@cross_origin(origin='*')
 def login_api():
     data = request.json
     id = data['id']
